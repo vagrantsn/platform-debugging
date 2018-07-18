@@ -1,0 +1,15 @@
+version: '2'
+services:
+  prestashop:
+    build: .
+    environment:
+      XDEBUG_CONFIG: remote_host=192.168.16.72
+    ports:
+      - "3000:80"
+    links:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: prestashop
