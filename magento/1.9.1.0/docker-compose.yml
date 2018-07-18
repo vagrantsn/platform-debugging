@@ -1,0 +1,15 @@
+version: '2'
+services:
+  magento:
+    build: .
+    environment:
+      XDEBUG_CONFIG: remote_host=HOST IP (the machine that sets the breakpoints)
+    ports:
+      - "3000:80"
+    links:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: magento
